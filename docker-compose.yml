@@ -1,0 +1,16 @@
+version: '3.6'
+services:
+  web:
+    image: 'nextcloud:latest'
+    restart: always
+    ports:
+      - target: 80
+        published: 8080
+        protocol: tcp
+    volumes:
+      - '$NEXTCLOUD_VOL/data/:/var/www/html'
+    environment:
+      - PHP_MEMORY_LIMIT=4096M
+      - PHP_UPLOAD_LIMIT=1024M
+      - PHP_POST_MAX_SIZE=1024M
+      - PHP_EXECUTION_TIME=3600
